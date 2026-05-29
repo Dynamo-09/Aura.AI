@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: filter 0.3s ease;
+  }
+  
+  html[data-theme='light'] {
+    filter: invert(1) hue-rotate(180deg);
+  }
+  
+  /* Prevent images and videos from being inverted */
+  html[data-theme='light'] img, 
+  html[data-theme='light'] video,
+  html[data-theme='light'] .candlestick-chart {
+    filter: invert(1) hue-rotate(180deg);
+  }
+}
+
+@layer components {
+  .candlestick-up { 
+    background-color: theme('colors.secondary'); 
+  }
+  .candlestick-down { 
+    background-color: theme('colors.error'); 
+  }
+  .glass-panel { 
+    backdrop-filter: blur(20px); 
+    background: rgba(9, 14, 25, 0.8); 
+  }
+  .aura-glow-line { 
+    filter: drop-shadow(0 0 4px theme('colors.secondary')); 
+  }
+}
+
+/* Custom Scrollbar for a premium look */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: theme('colors.background');
+}
+::-webkit-scrollbar-thumb {
+  background: theme('colors.surface-container-high');
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: theme('colors.outline-variant');
+}
